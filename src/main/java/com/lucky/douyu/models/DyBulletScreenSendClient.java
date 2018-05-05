@@ -32,10 +32,15 @@ public class DyBulletScreenSendClient {
 
     public void sendMsg(String msg) {
         byte[] data = MsgHandler.getMsgData(msg);
+        System.out.println("send: " + msg);
 
         try {
             bos.write(data, 0, data.length);
             bos.flush();
+
+            byte[] rev = new byte[MAX_BUFFER_LENGTH];
+            bis.read(rev);
+            System.out.println(new String(rev));
 
         } catch (IOException e) {
             e.printStackTrace();

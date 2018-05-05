@@ -30,18 +30,18 @@ public class DyBulletScreenPublisher {
                 DyBulletScreenSendClient client = new DyBulletScreenSendClient();
                 client.init(Constants.BulletScreenSend.ROOM_ID);
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(2500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                client.sendMsg("test " + (num++));
+                client.sendMsg("douzi " + (num++));
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 client.close();
             }
-        }, 1000, 6000);
+        }, 1000, 10000);
     }
 }

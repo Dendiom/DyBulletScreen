@@ -42,10 +42,12 @@ public class MsgHandler {
     }
 
     public static byte[] getMsgData(String msg) {
+        String timestamp = String.valueOf(System.currentTimeMillis());
         msg = msg.replaceAll("@", "@A").replaceAll("/", "@S");
         Map<String, String> params = new LinkedHashMap<String, String>();
         params.put("type", "chatmessage");
         params.put("receiver", "0");
+//        params.put("dmvv", "01i87fh3h4");
         params.put("content", msg);
         params.put("scope", "");
         params.put("col", "0");
@@ -53,7 +55,12 @@ public class MsgHandler {
         params.put("p2p", "0");
         params.put("nc", "0");
         params.put("rev", "0");
+        params.put("hg", "0");
         params.put("ifs", "0");
+        params.put("sid", "");
+        params.put("lid", "0");
+        params.put("iaid", "0");
+        params.put("cst", timestamp);
 
         return generateDyMsg(new MsgEncoder().encode(params));
     }
@@ -72,8 +79,8 @@ public class MsgHandler {
         params.put("devid", uuid);
         params.put("rt", timestamp);
         params.put("vk", vk);
-        params.put("ver", "20150929");
-        params.put("aver", "2017073111");
+        params.put("ver", "20180413");
+        params.put("aver", "2018050401");
         params.put("ltkid", Constants.BulletScreenSend.LTKID);
         params.put("biz", "1");
         params.put("stk", Constants.BulletScreenSend.STK);
@@ -171,23 +178,3 @@ public class MsgHandler {
 
 }
 
-class MD5Util {
-    public static String MD5(String s) {
-        char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-        try {
-            MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            byte[] md = mdInst.digest(s.getBytes());
-            int j = md.length;
-            char str[] = new char[j * 2];
-            int k = 0;
-            for (byte b : md) {
-                str[k++] = hexDigits[b >>> 4 & 0xf];
-                str[k++] = hexDigits[b & 0xf];
-            }
-            return new String(str).toLowerCase();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-}
