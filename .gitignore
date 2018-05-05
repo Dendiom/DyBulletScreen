@@ -1,4 +1,7 @@
-# Compiled class file
+out/
+target/
+.idea/
+META_INF/# Compiled class file
 *.class
 
 # Log file
