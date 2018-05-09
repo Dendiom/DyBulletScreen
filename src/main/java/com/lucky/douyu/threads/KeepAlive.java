@@ -9,7 +9,7 @@ public class KeepAlive implements Runnable {
         while (client.isReady()) {
             try {
                 client.keepAlive();
-                Thread.sleep(45000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
