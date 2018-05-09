@@ -21,7 +21,7 @@ public class DyBulletScreenReceiver {
         // 初始化Mongo客户端
         if (Constants.Mongo.USE_MONGO) {
             MongoHelper mongoHelper = MongoHelper.getInstance();
-            mongoHelper.init(Constants.BulletScreenReceive.ROOM_ID);
+            mongoHelper.init();
         }
 
         // 开启心跳和消息接收线程

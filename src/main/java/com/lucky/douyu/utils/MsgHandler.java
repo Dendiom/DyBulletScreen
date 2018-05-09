@@ -128,8 +128,12 @@ public class MsgHandler {
             }
 
             if (BULLET_SCREEN_LEVEL.equals(pairs[0])) {
-                doc.append("level", pairs[1].replaceAll("@S", "/")
-                        .replaceAll("@A", "@"));
+                int level = Integer.valueOf(pairs[1]);
+                if (level < Constants.BulletScreenReceive.LEVEL_LIMIT) {
+                    return;
+                }
+
+                doc.append("level", level);
                 continue;
             }
 
@@ -150,6 +154,8 @@ public class MsgHandler {
                         MongoHelper.getInstance().insertDocs(copy);
                     }
                 });
+            } else {
+                docs.clear();
             }
         }
 
@@ -177,4 +183,3 @@ public class MsgHandler {
     }
 
 }
-
