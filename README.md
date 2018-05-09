@@ -15,6 +15,7 @@
     interface BulletScreenReceive {
         String ROOM_ID ="9999";      // 接收某房间的弹幕
         String GROUP_ID = "-9999";   // 弹幕分组，海量弹幕模式
+        int LEVEL_LIMIT = 5;         // 忽略一定等级下的弹幕
     }
 ```
 &#8194;&#8194;&#8194;&#8194;运行 *bin/DyBulletScreenReceiver*
