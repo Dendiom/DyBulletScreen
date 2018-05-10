@@ -3,6 +3,7 @@ package com.lucky.douyu.utils;
 
 import com.lucky.douyu.Constants;
 import com.lucky.douyu.models.MongoHelper;
+import org.apache.log4j.Logger;
 import org.bson.Document;
 
 import java.io.ByteArrayOutputStream;
@@ -25,6 +26,8 @@ public class MsgHandler {
 
     private static List<Document> docs = new ArrayList<Document>();
     private static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+
+    private static Logger logger = Logger.getLogger(MsgHandler.class);
 
     public static byte[] getKeepAliveData() {
         Map<String, String> params = new HashMap<String, String>();
@@ -51,7 +54,7 @@ public class MsgHandler {
         params.put("content", msg);
         params.put("scope", "");
         params.put("col", "0");
-        params.put("pid","");
+        params.put("pid", "");
         params.put("p2p", "0");
         params.put("nc", "0");
         params.put("rev", "0");
@@ -158,8 +161,7 @@ public class MsgHandler {
                 docs.clear();
             }
         }
-
-        System.out.println(doc);
+        logger.info(doc);
     }
 
     private static byte[] generateDyMsg(String data) {

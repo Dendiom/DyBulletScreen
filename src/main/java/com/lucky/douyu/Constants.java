@@ -3,7 +3,7 @@ package com.lucky.douyu;
 public interface Constants {
 
     interface Mongo {
-        Boolean USE_MONGO = true;        // 是否使用mongo
+        Boolean USE_MONGO = false;        // 是否使用mongo
         String CONNECT_STRING = "mongodb://localhost:27017";
         String DATABASE = "bullet_screen";  // mongo数据库名称
         String COLLECTION = "nd_1209";     // 集合名称

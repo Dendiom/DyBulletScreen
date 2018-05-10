@@ -1,6 +1,7 @@
 package com.lucky.douyu.models;
 
 import com.lucky.douyu.utils.MsgHandler;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -25,6 +26,7 @@ public class DyBulletScreenClient {
     private BufferedInputStream bis;
     private BufferedOutputStream bos;
     private volatile boolean ready;
+    private Logger logger = Logger.getLogger(DyBulletScreenClient.class);
 
     private DyBulletScreenClient() {
     }
@@ -54,7 +56,7 @@ public class DyBulletScreenClient {
         bis = null;
         bos = null;
         socket = null;
-        System.out.println("reconnect");
+        logger.info("reconnect");
         init(roomId, groupId);
     }
 
@@ -112,7 +114,7 @@ public class DyBulletScreenClient {
             e.printStackTrace();
         }
 
-        System.out.println("connect to bullet screen server");
+        logger.info("connect to bullet screen server");
     }
 
     /**
@@ -128,7 +130,7 @@ public class DyBulletScreenClient {
 //            byte[] recv = new byte[MAX_BUFFER_LENGTH];
 //            bis.read(recv, 0 , recv.length);
             //todo judge if login successfully
-            System.out.println("login successfully");
+            logger.info("login successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -145,7 +147,7 @@ public class DyBulletScreenClient {
             bos.write(data, 0, data.length);
             bos.flush();
 
-            System.out.println("login room successfully");
+            logger.info("login room successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -164,7 +166,7 @@ public class DyBulletScreenClient {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("exit");
+            logger.info("exit");
         }
     }
 }
