@@ -1,6 +1,7 @@
 package com.lucky.douyu.models;
 
 import com.lucky.douyu.utils.MsgHandler;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -24,6 +25,7 @@ public class DyBulletScreenSendClient {
     private Socket socket;
     private BufferedInputStream bis;
     private BufferedOutputStream bos;
+    private Logger logger = Logger.getLogger(DyBulletScreenSendClient.class);
 
     public void init(String roomId) {
         connect();
@@ -62,10 +64,10 @@ public class DyBulletScreenSendClient {
             byte[] rec = new byte[MAX_BUFFER_LENGTH];
 
             bis.read(rec);
-            System.out.println(new String(rec));
+            logger.info(new String(rec));
 
             //todo judge if login successfully
-            System.out.println("login successfully");
+            logger.info("login successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,6 +83,6 @@ public class DyBulletScreenSendClient {
             e.printStackTrace();
         }
 
-        System.out.println("connect to bullet screen server");
+        logger.info("connect to bullet screen server");
     }
 }
