@@ -6,8 +6,17 @@ public class ReceiveMsg implements Runnable {
 
     public void run() {
         DyBulletScreenClient client = DyBulletScreenClient.getInstance();
-        while (client.isReady()) {
-            client.receiveMsg();
+        while (true) {
+            while (client.isReady()) {
+                client.receiveMsg();
+            }
+
+            try {
+                System.out.println("receive thread sleep");
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
