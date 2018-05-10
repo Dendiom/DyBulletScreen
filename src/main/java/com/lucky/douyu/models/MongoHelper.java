@@ -5,10 +5,12 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.apache.log4j.Logger;
 import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * MongoDB 操作封装.
@@ -18,6 +20,8 @@ public class MongoHelper {
     private static MongoHelper sInstance;
 
     private MongoCollection<Document> collection;
+
+    private Logger logger = Logger.getLogger(MongoHelper.class);
 
     private MongoHelper() {
     }
@@ -34,12 +38,12 @@ public class MongoHelper {
         MongoClient client = MongoClients.create(Constants.Mongo.CONNECT_STRING);
         MongoDatabase database = client.getDatabase(Constants.Mongo.DATABASE);
         initCollection(database);
-        System.out.println("mongo client init");
+        logger.info("mongo client init");
     }
 
     public void insertDocs(List<Document> docs) {
         collection.insertMany(docs);
-        System.out.println("insert documents");
+        logger.info("insert documents");
     }
 
     private void initCollection(MongoDatabase database) {
