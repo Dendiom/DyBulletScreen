@@ -26,10 +26,12 @@ public class DyBulletScreenClient {
     private BufferedOutputStream bos;
     private volatile boolean ready;
 
-    private DyBulletScreenClient(){}
+    private DyBulletScreenClient() {
+    }
 
     /**
      * 获取单例
+     *
      * @return DyBulletScreenClient.
      */
     public static DyBulletScreenClient getInstance() {
@@ -46,6 +48,14 @@ public class DyBulletScreenClient {
         login(roomId);
         joinGroup(roomId, groupId);
         ready = true;
+    }
+
+    public void reconnect(String roomId, String groupId) {
+        bis = null;
+        bos = null;
+        socket = null;
+        System.out.println("reconnect");
+        init(roomId, groupId);
     }
 
     /**
@@ -83,6 +93,10 @@ public class DyBulletScreenClient {
 
     public boolean isReady() {
         return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 
     /**
