@@ -1,6 +1,5 @@
 package com.lucky.douyu.utils;
 
-
 import java.security.MessageDigest;
 
 class MD5Util {
