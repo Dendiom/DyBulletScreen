@@ -18,17 +18,12 @@ public class KeepAlive implements Runnable {
                     client.keepAlive();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    logger.error("socket closed!!!!");
-                    client.setReady(false);
-                    client.reconnect(Constants.BulletScreenReceive.ROOM_ID, Constants.BulletScreenReceive.GROUP_ID);
                 }
             }
 
             try {
+                logger.info("keepAlive thread sleep");
                 Thread.sleep(5000);
-                if (!client.isReady()) {
-                    client.reconnect(Constants.BulletScreenReceive.ROOM_ID, Constants.BulletScreenReceive.GROUP_ID);
-                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

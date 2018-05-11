@@ -1,5 +1,6 @@
 package com.lucky.douyu.models;
 
+import com.lucky.douyu.Constants;
 import com.lucky.douyu.utils.MsgHandler;
 import org.apache.log4j.Logger;
 
@@ -53,11 +54,15 @@ public class DyBulletScreenClient {
     }
 
     public void reconnect(String roomId, String groupId) {
-        bis = null;
-        bos = null;
-        socket = null;
-        logger.info("reconnect");
-        init(roomId, groupId);
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("socket close error");
+        } finally {
+            logger.info("reconnect");
+            init(roomId, groupId);
+        }
     }
 
     /**
@@ -71,6 +76,9 @@ public class DyBulletScreenClient {
             bos.flush();
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("socket closed!!!!");
+            setReady(false);
+            reconnect(Constants.BulletScreenReceive.ROOM_ID, Constants.BulletScreenReceive.GROUP_ID);
         }
     }
 
