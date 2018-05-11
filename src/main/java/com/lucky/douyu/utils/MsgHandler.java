@@ -124,7 +124,7 @@ public class MsgHandler {
         for (String param : params) {
             // System.out.println(param);
             String[] pairs = param.split("@=");
-            if (pairs[0] == null || pairs[1] == null) {
+            if (pairs.length < 2) {
                 continue;
             }
 

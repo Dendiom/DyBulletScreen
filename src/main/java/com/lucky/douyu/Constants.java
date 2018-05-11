@@ -10,9 +10,9 @@ public interface Constants {
     }
 
     interface BulletScreenReceive {
-        String ROOM_ID = "9999";      // 接收某房间的弹幕
+        String ROOM_ID = "1209";      // 接收某房间的弹幕
         String GROUP_ID = "-9999";   // 弹幕分组，海量弹幕模式
-        int LEVEL_LIMIT = 5;         // 忽略几级以下的弹幕
+        int LEVEL_LIMIT = 8;         // 忽略几级以下的弹幕
     }
 
     // 以下均来自浏览器cookie
