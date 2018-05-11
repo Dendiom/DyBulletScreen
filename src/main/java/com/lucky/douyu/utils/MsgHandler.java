@@ -124,6 +124,10 @@ public class MsgHandler {
         for (String param : params) {
             // System.out.println(param);
             String[] pairs = param.split("@=");
+            if (pairs[0] == null || pairs[1] == null) {
+                continue;
+            }
+
             if (BULLET_SCREEN_NICKNAME.equals(pairs[0])) {
                 doc.append("nickname", pairs[1].replaceAll("@S", "/")
                         .replaceAll("@A", "@"));
