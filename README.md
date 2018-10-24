@@ -31,7 +31,8 @@
     }
 ```    
 &#8194;&#8194;&#8194;&#8194;运行 *bin/DyBulletScreenPublisher*
-
+## 示例
+![image](src/image/example.png)
 ## 存在问题
 * 通过wireshark抓包获取发送弹幕数据包进行分析，其中的dmvv字段来源还不清楚
 * 发送弹幕时只能发送英文，中文会出现编码错误
